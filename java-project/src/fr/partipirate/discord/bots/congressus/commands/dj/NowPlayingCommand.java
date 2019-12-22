@@ -72,10 +72,21 @@ public class NowPlayingCommand extends ADJCommand implements ICommand {
             		eb.setTitle(track.getInfo().title) ;
             	}
             	else {
-            		eb.setTitle(trackInfo.getRecordingName()) ;
+            		if (trackInfo.getRecordingURL() == null) {
+            			eb.setTitle(trackInfo.getRecordingName()) ;
+            		}
+            		else {
+            			eb.setTitle(trackInfo.getRecordingName(), trackInfo.getRecordingURL()) ;
+            		}
             	}
             	
             	if (trackInfo.getArtistName() == null) {
+            		if (trackInfo.getArtistURL() == null) {
+            			eb.setTitle(trackInfo.getArtistName()) ;
+            		}
+            		else {
+            			eb.setTitle(trackInfo.getArtistName(), trackInfo.getArtistURL()) ;
+            		}
             		eb.setTitle(track.getInfo().title) ;
             	}
             	else {
